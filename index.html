@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Toll Calculator</title>
+    <style>
+        body {
+            background-color: var(--bg-color, white);
+            transition: background-color 0.5s;
+        }
+
+        .result-card {
+            background: linear-gradient(to right, #6EE7B7, #3B82F6);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto">
+        <h1 class="text-center text-3xl font-bold my-5">Toll Calculator</h1>
+        <div>
+            <select id="vehicleType" class="border rounded p-2">
+                <option value="small">Small Vehicle</option>
+                <option value="rigid">Rigid Vehicle</option>
+                <option value="heavy">Heavy Vehicle</option>
+            </select>
+            <select id="region" class="border rounded p-2">
+                <option value="sadc">SADC</option>
+                <option value="tanzania">Tanzania</option>
+            </select>
+            <button id="calculateBtn" class="bg-blue-500 text-white rounded p-2 ml-2">Calculate</button>
+        </div>
+        <div id="result" class="result-card p-4 my-5 hidden">
+            <p id="resultText" class="text-xl"></p>
+        </div>
+        <button id="adminBtn" class="bg-red-500 text-white rounded p-2 mt-5">Admin Access</button>
+    </div>
+
+    <script>
+        const adminPin = '6789';
+        const routesDB = [] // Pre-populated routes will be added here
+
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            // Logic for toll calculation
+            // Display result...
+            document.getElementById('result').classList.remove('hidden');
+            document.getElementById('resultText').textContent = 'Toll calculated!';
+        });
+
+        document.getElementById('adminBtn').addEventListener('long-press', function() {
+            const pin = prompt('Enter Admin PIN:');
+            if (pin === adminPin) {
+                // Open admin panel
+                alert('Welcome to the Admin Panel!');
+            } else {
+                alert('Incorrect PIN!');
+            }
+        });
+
+        // Implement localStorage for persistence and other features like currency conversion 
+    </script>
+</body>
+</html>
